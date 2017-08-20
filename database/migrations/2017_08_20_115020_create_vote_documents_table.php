@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBillTable extends Migration
+class CreateVoteDocumentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateBillTable extends Migration
      */
     public function up()
     {
-        Schema::create('bills', function(Blueprint $table){
+        Schema::create('document', function(Blueprint $table){
             $table->increments('id');
             $table->timestamps();
             $table->softDeletes();
@@ -29,6 +29,6 @@ class CreateBillTable extends Migration
      */
     public function down()
     {
-        Schema::drop('bills');
+        Schema::drop('document');
     }
 }

@@ -3,16 +3,16 @@
 namespace App\Models;
 
 /**
- * Class Bill
+ * Class Document
  * @package App\Models
  * @property string $user_id
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
  * @property \Carbon\Carbon|null $deleted_at
  * @property-read \App\Models\User $locations
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\BillIteration $billIterations
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\DocumentIteration $documentIterations
  */
-class Bill extends BaseModel
+class Document extends BaseModel
 {
     /**
      * Belongs to a user
@@ -24,11 +24,11 @@ class Bill extends BaseModel
     }
 
     /**
-     * Has many bill iterations
+     * Has many document iterations
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function billIterations() {
-        return $this->hasMany(BillIteration::class);
+    public function documentIterations() {
+        return $this->hasMany(DocumentIteration::class);
     }
 }

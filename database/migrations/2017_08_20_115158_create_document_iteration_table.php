@@ -1,11 +1,11 @@
 <?php
 
-use App\Models\BillIteration;
+use App\Models\DocumentIteration;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBillIterationTable extends Migration
+class CreateDocumentIterationTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,13 +14,11 @@ class CreateBillIterationTable extends Migration
      */
     public function up()
     {
-        Schema::create('bill_iterations', function(Blueprint $table){
+        Schema::create('document_iterations', function(Blueprint $table){
             $table->increments('id');
             $table->timestamps();
             $table->softDeletes();
             $table->string('content');
-            $table->enum('status',BillIteration::BILL_STATUSES);
-            $table->timestamp('voting_closed');
         });
     }
 
@@ -31,6 +29,6 @@ class CreateBillIterationTable extends Migration
      */
     public function down()
     {
-        Schema::drop('bill_iterations');
+        Schema::drop('document_iterations');
     }
 }

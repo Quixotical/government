@@ -7,21 +7,21 @@
  */
 namespace App\Repositories;
 
-use App\Contracts\Repositories\BillRepositoryContract;
-use App\Models\Bill;
+use App\Contracts\Repositories\DocumentRepositoryContract;
+use App\Models\Document;
 
 /**
  * Class BillRepository
  * @package App\Repositories
  */
-class BillRepository implements BillRepositoryContract
+class DocumentRepository implements DocumentRepositoryContract
 {
     /**
-     * @var Bill $bill the bill model for this instance
+     * @var Document $bill the bill model for this instance
      */
     protected $bill;
 
-    public function __construct(Bill $bill){
+    public function __construct(Document $bill){
         $this->bill = $bill;
     }
 }

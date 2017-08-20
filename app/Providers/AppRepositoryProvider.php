@@ -2,12 +2,12 @@
 
 namespace App\Providers;
 
-use App\Contracts\Repositories\BillIterationRepositoryContract;
-use App\Contracts\Repositories\BillRepositoryContract;
-use App\Models\Bill;
-use App\Models\BillIteration;
-use App\Repositories\BillIterationRepository;
-use App\Repositories\BillRepository;
+use App\Contracts\Repositories\DocumentIterationRepositoryContract;
+use App\Contracts\Repositories\DocumentRepositoryContract;
+use App\Models\Document;
+use App\Models\DocumentIteration;
+use App\Repositories\DocumentIterationRepository;
+use App\Repositories\DocumentRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppRepositoryProvider extends ServiceProvider
@@ -21,15 +21,15 @@ class AppRepositoryProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(BillRepositoryContract::class, function(){
-            return new BillRepository(
-                new Bill()
+        $this->app->bind(DocumentRepositoryContract::class, function(){
+            return new DocumentRepository(
+                new Document()
             );
         });
 
-        $this->app->bind(BillIterationRepositoryContract::class, function(){
-            return new BillIterationRepository(
-                new BillIteration()
+        $this->app->bind(DocumentIterationRepositoryContract::class, function(){
+            return new DocumentIterationRepository(
+                new DocumentIteration()
             );
         });
     }
@@ -42,8 +42,8 @@ class AppRepositoryProvider extends ServiceProvider
     public function provides()
     {
         return [
-            BillRepositoryContract::class,
-            BillIterationRepositoryContract::class,
+            DocumentRepositoryContract::class,
+            DocumentIterationRepositoryContract::class,
         ];
     }
 }
