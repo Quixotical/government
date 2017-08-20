@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Validator;
+use App\Models\Role;
 
 class UserController extends Controller
 {
@@ -40,9 +41,12 @@ class UserController extends Controller
 
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
-        $user = User::create($input);
-        $success['token'] =  $user->createToken('Government')->accessToken;
-        $success['name'] =  $user->name;
+        $user = new User();
+        $regUser =$user->create($input);
+
+        $regUser->attachRole(Role::fetchByName(Role::COMPANY_MEMBER));
+        $success['token'] =  $regUser->createToken('Government')->accessToken;
+        $success['name'] =  $regUser->name;
 
         return response()->json(['success'=>$success], $this->successStatus);
     }
