@@ -60,4 +60,13 @@ class Document extends BaseModel
     public function documentIterations() {
         return $this->hasMany(DocumentIteration::class);
     }
+
+    /**
+     * Retrieve the latest document iteration for a document
+     *
+     * @return \Illuminate\Database\Query\Builder|static
+     */
+    public function latestIteration() {
+        return $this->hasOne(DocumentIteration::class)->latest();
+    }
 }
