@@ -31,13 +31,13 @@ class DocumentRepository implements DocumentRepositoryContract
      */
     public function findAll(): Collection
     {
-        return $this->document->all();
+        return $this->document->with(['latestIteration'])->get();
     }
 
     /**
      * Create a new document
      * @param array $data
-     * @return $this|\Illuminate\Database\Eloquent\Model
+     * @return bool
      */
     public function create(array $data = [])
     {
