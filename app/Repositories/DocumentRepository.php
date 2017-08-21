@@ -9,6 +9,7 @@ namespace App\Repositories;
 
 use App\Contracts\Repositories\DocumentRepositoryContract;
 use App\Models\Document;
+use Illuminate\Database\Eloquent\Collection;
 
 /**
  * Class BillRepository
@@ -19,9 +20,27 @@ class DocumentRepository implements DocumentRepositoryContract
     /**
      * @var Document $bill the bill model for this instance
      */
-    protected $bill;
+    protected $document;
 
-    public function __construct(Document $bill){
-        $this->bill = $bill;
+    public function __construct(Document $document){
+        $this->document = $document;
+    }
+
+    /**
+     * Find all documents
+     */
+    public function findAll(): Collection
+    {
+        return $this->document->all();
+    }
+
+    /**
+     * Create a new document
+     * @param array $data
+     * @return $this|\Illuminate\Database\Eloquent\Model
+     */
+    public function create(array $data = [])
+    {
+        return $this->document->create($data);
     }
 }
