@@ -19,6 +19,8 @@ class CreateDocumentIterationTable extends Migration
             $table->timestamps();
             $table->softDeletes();
             $table->string('content');
+            $table->unsignedInteger('document_id');
+            $table->foreign('document_id')->references('id')->on('documents');
         });
     }
 

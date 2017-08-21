@@ -13,10 +13,11 @@ class CreateVoteDocumentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('document', function(Blueprint $table){
+        Schema::create('documents', function(Blueprint $table){
             $table->increments('id');
             $table->timestamps();
             $table->softDeletes();
+            $table->text('name');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
         });
@@ -29,6 +30,6 @@ class CreateVoteDocumentsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('document');
+        Schema::drop('documents');
     }
 }
