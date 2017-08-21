@@ -8,7 +8,15 @@
 declare(strict_types=1);
 namespace App\Contracts\Repositories;
 
+use App\Models\Document;
+
 interface DocumentIterationRepositoryContract
 {
-
+    /**
+     * Create new document Iteration
+     * @param array $data
+     * @param Document $document
+     * @return
+     */
+    public function create(array $data = [], Document $document);
 }
