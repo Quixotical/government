@@ -10,5 +10,14 @@ namespace App\Contracts\Repositories;
 
 interface DocumentRepositoryContract
 {
+    /**
+     * Find all documents
+     */
+    public function findAll();
 
+    /**
+     * Create a new document
+     * @param array $data
+     */
+    public function create(array $data = []);
 }
