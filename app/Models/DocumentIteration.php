@@ -15,6 +15,16 @@ use Carbon\Carbon;
 class DocumentIteration extends BaseModel
 {
     /**
+     * Fields which can not be mass assigned
+     * @var array
+     */
+    protected $guarded = [
+        'created_at',
+        'updated_at',
+        'deleted_at'
+    ];
+
+    /**
      * Belongs to a document
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
