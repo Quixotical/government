@@ -4,6 +4,7 @@ namespace App\Http\Requests\DocumentIteration;
 
 use App\Models\Document;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Validator;
 
 /**
  * Class StoreRequest
@@ -26,6 +27,15 @@ class StoreRequest extends FormRequest
     public function authorize()
     {
         $this->document = Document::find($this->document_id);
+
+        $validator = Validator::make($this->all(), [
+            'content' => 'required|string'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
         return $this->document instanceof Document;
     }
 
